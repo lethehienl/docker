@@ -1,6 +1,7 @@
 * I'm study from community =>  i want to send my thinkings
 ### Introdutions
 * Base on Centos 6.8
+* Dockerfile
 * build two docker iamges : one for app , one for db
 * Docker app: PHP 7 + nano vim + mysql client + composer + supervisor
 * Docekr db: mysql 5.6 + vim + nano + supervisor
