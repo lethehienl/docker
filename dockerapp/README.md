@@ -1,6 +1,7 @@
-create docker image :
-    docker build -t lethehienl/centos68 .
-Build docker web container :
+### create docker image :
+*    docker build -t lethehienl/centos68 .
+###Build docker web container :
+```
 
        docker run -d -p 80:80 -p 8443:443 \
         -v /home/hienlt/work/docker/dockerapp/conf/etc/httpd/conf.d:/etc/httpd/conf.d \
@@ -10,11 +11,11 @@ Build docker web container :
         -v /home/hienlt/work/docker/transfer:/transfer   \
         --name docker_app lethehienl/centos68
 
+```
 
-
-Check IP:
-
+### Check IP:
+```
     docker inspect --format '{{ .NetworkSettings.IPAddress}}' docker_db
     172.17.0.3
     $ mysql -h 172.17.0.3 -u root -p
-
+```
