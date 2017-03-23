@@ -1,7 +1,7 @@
 ### create docker image :
 *    docker build -t lethehienl/centos68 .
 
-###Build docker web container :
+### Build docker web container :
 ```
 
        docker run -d -p 80:80 -p 8443:443 \
