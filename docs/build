@@ -1,0 +1,7 @@
+## PUSH TO DOCKER HUB
+```
+	docker images
+	docker tag cb67c0783f98 lethehienl/centos68:latest
+	docker login
+	docker push lethehienl/centos68
+```

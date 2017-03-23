@@ -1,0 +1,126 @@
+docker ps  || -a -l
+docker run docker/whalesay cowsay boo
+docker images
+docker tag 7d9495d03763 maryatdocker/docker-whale:latest
+
+docker login --username=hienlt --email=hienlt@it-consultis.com
+docker login docker.it-consultis.com.cn
+Username: hien
+Password: y%PmvQJH179C
+
+
+
+remove docker
+docker rmi -f a86820d1e948
+
+// create image form docker file:
+
+docker build -t hienlt/docker2 .
+docker run -t hienlt/docker2  /bin/bash
+docker tag 5db5f8471261 ouruser/sinatra:devel
+
+stop docker
+docker ps
+docker top f054a6a6f358
+docker kill f054a6a6f358
+
+network
+
+docker network ls
+
+// ssh
+docker ps
+
+docker exec -it web ip addr
+docker exec -it web ip 172.17.0.1
+
+mapping folder docker
+
+
+II.
+1. setup 
+	Create cloud acc: https://www.docker.com/ lethehienl | password
+2. Create repository
+	https://cloud.docker.com/app/lethehienl/repository/list
+3. Build  LAMP image.
+	Ref:https://www.howtoforge.com/tutorial/how-to-create-docker-images-with-dockerfile/
+	Docker file: https://github.com/tutumcloud/lamp/blob/master/Dockerfile
+	Docker File: https://hub.docker.com/r/fauria/lamp
+	Docker File: https://github.com/fauria/docker-lamp
+	https://github.com/geekineers/lamp-laravel-php7
+	a. create Dockerfile
+	b. Build New Docker Image and Create New Container Based on it
+		docker build -t lethehienl/centos6 .
+
+		Use cases
+
+		Create a temporary container for testing purposes:
+
+	    		docker run -i -t --rm lethehienl/centos6 bash
+		Create a temporary container to debug a web app:
+
+	    		docker run --rm -p 8080:80 -e LOG_STDOUT=true -e LOG_STDERR=true -e LOG_LEVEL=debug -v /my/data/directory:/var/www/html fauria/lamp
+		Create a container linking to another MySQL container:
+
+	    		docker run -d --link my-mysql-container:mysql -p 8080:80 -v /my/data/directory:/var/www/html -v /my/logs/directory:/var/log/httpd --name my-lamp-container fauria/lamp
+		Get inside a running container and open a MariaDB console:
+
+	    		docker exec -i -t my-lamp-container bash
+	    		mysql -u root
+	c. push docker image
+		docker images
+		docker tag cb67c0783f98 lethehienl/centos6:latest
+		docker login
+		docker push lethehienl/centos6
+	d. run docker
+		Pure: docker run -it lethehienl/centos6
+		Port: docker run -p 8888:80 lethehienl/centos6 => localhost:8888
+		docker run -d -p 80:80 -p 3306:3306 -v /home/hienlt/workspace/docker/projects:/var/www/html -v /home/hienlt/workspace/docker/etc/apache2/sites-enabled:/etc/apache2/sites-enabled -v /home/hienlt/workspace/docker/etc/mysql:/etc/mysql --name lamp lethehienl/hienlt
+
+
+		
+	e. stop docker:
+		docker  stop  [CONTAINER_ID]  // $(docker ps -a -q)
+		docker rm [CONTAINER_ID] // $(docker ps -a -q)
+	f. docker start
+		docker start [CONTAINER_ID] // after run docker
+	g. rebuild docker
+		docker build --no-cache=true -t lethehienl/centos6  .
+	h. doker logs
+		docker logs [CONTAINER_ID]
+	i. commit image
+		sudo docker tag [IMAGE_ID] lethehienl/centos6:latest  sudo docker tag cb67c0783f98 lethehienl/centos6:latest
+
+
+
+
+	
+
+	
+4. Config file to run.
+
+   a. create docker.sh
+
+III.
+1.Docker remove image and container
+	#images
+	docker images -a
+	docker rmi ID_NAME
+
+	#container
+	docker ps -a
+	docker rm ID_NAME
+2. Stop container
+	docker stop focused_carson
+
+III. note
+
+1. Don't restart  apache2 on docker
+I'm guessing you are then using docker exec to execute a shell in the container to edit the file and restart apache?
+If so this would explain why the second time you start apache it complains about the existing process.
+We  can use this way: docker restart [docker_container_name]
+2 docker nano Error opening terminal: unknown.
+INTO DOCKER EXEC WE RUN:
+export TERM=xterm
+
+

@@ -1,0 +1,10 @@
+## Check docker:
+* docker ps
+## SSH Docker
+* docker exec -ti [DOCKER_NAME] bash
+* ex: * docker exec -ti vietlink_app bash
+## ISSUE not found app as nano or vim
+* export TERM=xterm
+
+
+
