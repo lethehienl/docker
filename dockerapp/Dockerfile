@@ -25,9 +25,11 @@ RUN yum -y install \
  https://mirror.webtatic.com/yum/el6/latest.rpm \
 RUN yum -y install  php70w  \
 php70w-fpm php70w-opcache \
-php \
+php php-xml php-curl php-mbstring\
 php70w-devel php70w-gd php70w-pdo  php70w-xmlrpc php70w-xml php70w-process\
-php70w-intl
+php70w-intl php70w-cli php70w-mbstring 
+
+
 RUN yum -y install yum-plugin-replace
 RUN yum -y replace php-common --replace-with=php70w-common
 
