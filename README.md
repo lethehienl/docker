@@ -83,5 +83,6 @@ REBUILD DOCKER WHEN we need change some things about enviroment
     docker push lethehienl/centos68
  Method 2 update  from container's change
  https://docs.docker.com/engine/reference/commandline/commit/#description
+REF: docker hub: https://cloud.docker.com/u/lethehienl
 
 ```
